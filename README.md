@@ -19,7 +19,7 @@ tags:
 
 <AuthorAvatar
 author_name="Alexandre Sajus"
-author_avatar="/media/Alexandre.png"
+author_avatar="/media/Alexandre.jpg"
 username="TODO"
 uid={true}
 />
@@ -60,13 +60,23 @@ Before we start, make sure you have Python installed. Then, install the required
 pip install elevenlabs elevenlabs[pyaudio] python-dotenv
 ```
 
+Processing audio requires additional dependencies on Linux and MacOS:
+- For Linux, you need to install `portaudio19`:
+```sh
+sudo apt install portaudio19
+```
+- For MacOS, you need to install `portaudio`:
+```sh
+brew install portaudio
+```
+
 ### 2. Setting up ElevenLabs
 
 ElevenLabs provides a Conversational AI API that we will use to create our Voice Assistant. - The API records the user's voice through the microphone
-- It processes it to know when the user has finished speaking or is interrupting the assistant
-- It calls an LLM model to generate a response
-- It synthesizes the response into speech
-- It plays the synthesized speech through the speakers
+- 🎤 It processes it to know when the user has finished speaking or is interrupting the assistant
+- 🤖 It calls an LLM model to generate a response
+- 📈 It synthesizes the response into speech
+- 🔊 It plays the synthesized speech through the speakers
 
 <p align="center">
   <img src="media/elevenlabs_diagram.png" alt="ElevenLabs Function Diagram" width="80%"/>
@@ -114,16 +124,20 @@ AGENT_ID=your_agent_id
 API_KEY="sk_XXX...XXX"
 ```
 
+Please make sure to save your ".env" file after adding the credentials.
+
 <p align="center">
   <img src="media/apiKeys.png" alt="API keys" width="80%"/>
 </p>
 
 ElevenLabs is now set up and ready to be used in our Python script!
 
-Note: ElevenLabs works with a credit system. When you sign up, you get 10,000 free credits which amount to 15 minutes of conversation. You can buy more credits if needed.
+**Note:** ElevenLabs works with a credit system. When you sign up, you get 10,000 free credits which amount to 15 minutes of conversation. You can buy more credits if needed.
 
 
 ## Building the Voice Assistant
+
+The full code for this application is available [here](TODO).
 
 ### 1. Load Environment Variables
 
@@ -153,10 +167,12 @@ from elevenlabs.types import ConversationConfig
 ```
 
 We will then configure the conversation with the agent's first message and system prompt. We are going to inform the assistant that the user has a schedule and prompt it to help the user. In this part you can customize:
-- The user's name: what the assistant will call the user
-- The schedule: the user's schedule that the assistant will use to provide help
-- The prompt: the message that the assistant will receive when the conversation starts to understand the context of the conversation
-- The first message: the first message the assistant will say to the user
+- The **user's name**: what the assistant will call the user
+- The **schedule**: the user's schedule that the assistant will use to provide help
+- The **prompt**: the message that the assistant will receive when the conversation starts to understand the context of the conversation
+- The **first message**: the first message the assistant will say to the user
+
+**Prompts** are used to provide context to the assistant and help it understand the user's needs. They can be used to provide information about the user's environment, preferences, or any other information that can help the assistant provide better responses.
 
 ```python
 user_name = "Alex"
@@ -183,7 +199,7 @@ config = ConversationConfig(
     dynamic_variables={},
 )
 
-client = ElevenLabs(api_key=API_KEY, timeout=15)
+client = ElevenLabs(api_key=API_KEY)
 conversation = Conversation(
     client,
     AGENT_ID,
@@ -229,6 +245,8 @@ conversation.start_session()
 
 ## Running the Assistant
 
+Please make sure your audio devices are correctly set up in your system settings before running the code.
+
 Execute the script:
 
 ```bash
@@ -236,6 +254,8 @@ python voice_assistant.py
 ```
 
 The assistant will start listening for input and responding in real time!
+
+You can stop the assistant at any time by closing the terminal.
 
 ## Conclusion
 
