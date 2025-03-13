@@ -31,7 +31,7 @@ config = ConversationConfig(
     dynamic_variables={},
 )
 
-client = ElevenLabs(api_key=API_KEY, timeout=15)
+client = ElevenLabs(api_key=API_KEY)
 conversation = Conversation(
     client,
     AGENT_ID,
