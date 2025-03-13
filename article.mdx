@@ -124,7 +124,7 @@ AGENT_ID=your_agent_id
 API_KEY="sk_XXX...XXX"
 ```
 
-Please make sure to save your ".env" file after adding the credentials.
+**Please make sure to save your ".env" file after adding the credentials.**
 
 <p align="center">
   <img src="media/apiKeys.png" alt="API keys" width="80%"/>
@@ -245,7 +245,7 @@ conversation.start_session()
 
 ## Running the Assistant
 
-Please make sure your audio devices are correctly set up in your system settings before running the code.
+**Please make sure your audio devices are correctly set up in your system settings before running the code.**
 
 Execute the script:
 
