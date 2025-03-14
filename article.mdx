@@ -32,13 +32,32 @@ uid={true}
 
 ## Introduction
 
-Voice assistants like Siri, Google Assistant, and Alexa have revolutionized the way we interact with technology. In this tutorial, we’ll learn how to create a Voice Virtual Assistant using [ElevenLabs](https://elevenlabs.io/) API and Python. This assistant will be able to engage in natural conversations and provide helpful responses in real time.
+Hey!👋 I'm Alex! Since this is my first tutorial on Codédex, I wanted to revisit a very popular project I made in 2023: creating a voice virtual assistant using Python.
 
-The final assistant will:
+Back in 2023, I had just graduated with a Master's of Science in Artificial Intelligence and I had already made a few fun AI projects like detecting vehicles in video games using object detection or teaching 3D characters to jump over obstacles using reinforcement learning (You can check them out on my [YouTube channel](https://www.youtube.com/@alexandresajus/videos)).
 
-- Process user voice and text input
-- Use ElevenLabs API for voice synthesis
-- Provide a seamless conversational experience
+<p align="center">
+  <img src="media/youtube.png" alt="Videos on my YouTube channel" width="80%"/>
+</p>
+
+AI around language was getting more and more popular: ChatGPT released in 2022, and multiple companies were releasing APIs around managing text transcription and voice synthesis. Despite this, voice-based conversational AI was still in its early stages and voice assistants like the one in ChatGPT were just starting to be released in beta.
+
+That's why I decided to create my own! Back then, APIs were limited in functionality so I had to build my own pipeline with one tool per task:
+- 🎤 PyAudio to record the user's voice
+- ⌨️ Deepgram to transcribe the voice to text
+- 🤖 OpenAI GPT-3 to generate a response
+- 📈 ElevenLabs to convert the response to speech
+- 🔊 Pygame to play the response
+- 💻 Taipy to display the conversation
+- 🤝 And a lot of Python code to glue everything together
+
+It was a lot of work but it was worth it! I released it on [GitHub](https://github.com/AlexandreSajus/JARVIS) and on [YouTube](https://github.com/AlexandreSajus/JARVIS) and it got 24k views, 485 stars and 88 forks! Here's me talking to my chatbot after 24 hours without sleep:
+
+<p align="center">
+  <img src="media/old_chatbot.png" alt="Me talking to my old chatbot" width="80%"/>
+</p>
+
+Now, in 2025, I'm excited to revisit this project since APIs have evolved a lot since then. What took 6 different libraries to work in 2023 can now be done with just one API. In this tutorial, we will use the ElevenLabs API to record our voice and play the assistant's response in real time.
 
 Here is a sneak peek of the final assistant in action:
 
